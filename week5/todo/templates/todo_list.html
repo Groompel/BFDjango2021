@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BFDjango TODO</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">BFDjango TODO</a>
+    </nav>
+</header>
+<section>
+    <div class="jumbotron py-4 bg-white mb-0">
+        <div class="container">
+            <button class="btn btn-primary">Add Task</button>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="jumbotron bg-white py-0">
+        <div class="container">
+            <h1>Tasks in "List 1"</h1>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Task</th>
+                    <th scope="col">Created</th>
+                    <th scope="col">Due on</th>
+                    <th scope="col">Owner</th>
+                    <th scope="col">Mark</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for t in todos %}
+                    <tr>
+                        <td>
+                            <a href="">
+                                {{ t.task }}
+                            </a>
+                        </td>
+                        <td>{{ t.created }}</td>
+                        <td>{{ t.due }}</td>
+                        <td>{{ t.owner }}</td>
+                        <td>
+                            <button class="btn btn-sm {% if t.mark == 'Done' %} btn-success {% else %} btn-danger {% endif %}">
+                                {{ t.mark }}
+                            </button>
+                        </td>
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="jumbotron py-0 bg-white mb-0">
+        <div class="container">
+            <div class="btn-toolbar">
+                <div class="btn-group mr-4">
+                    <a href="1/completed" class="btn btn-warning">View completed tasks</a>
+                </div>
+                <div class="btn-group">
+                    <a class="btn btn-danger">Delete this list</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
